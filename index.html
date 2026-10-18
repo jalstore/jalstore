@@ -569,11 +569,28 @@
         details.notas ? "Notas: " + details.notas : ""
       ].filter(Boolean).join("\n");
 
-      if (WHATSAPP_NUMBER) {
-        window.open("https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message), "_blank", "noopener");
-      } else {
-        status.textContent = "Pedido registrado con número " + result.pedido + ". Falta configurar el WhatsApp oficial para enviar la confirmación.";
-      }
+    if (WHATSAPP_NUMBERS.length === 2) {
+  const messageUrl = "?text=" + encodeURIComponent(message);
+
+  status.textContent =
+    "Pedido " + result.pedido + " registrado. Elige el WhatsApp para confirmar.";
+
+  const links = WHATSAPP_NUMBERS.map((number, index) => {
+    const link = document.createElement("a");
+    link.href = "https://wa.me/" + number + messageUrl;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.className = "btn full";
+    link.textContent = "Continuar por WhatsApp " + (index + 1);
+    return link;
+  });
+
+  links.forEach(link => status.appendChild(link));
+} else {
+  status.textContent =
+    "Pedido registrado con número " + result.pedido +
+    ". No se han configurado los números de WhatsApp.";
+}
 
       cart = [];
       renderCart();
