@@ -302,6 +302,7 @@
       </div>
       <div class="total"><span>Total del pedido</span><span id="checkoutTotal">S/ 0.00</span></div>
       <div id="checkoutStatus" class="status" aria-live="polite"></div>
+      <div id="whatsappOptions" class="form-grid hidden"></div>
       <button class="btn full" id="submitOrder" type="submit">Registrar pedido y continuar</button>
       <button class="btn secondary full" type="button" data-close="checkoutOverlay">Volver al carrito</button>
     </form>
@@ -585,7 +586,10 @@
     return link;
   });
 
-  links.forEach(link => status.appendChild(link));
+  const options = $("whatsappOptions");
+options.innerHTML = "";
+options.classList.remove("hidden");
+links.forEach(link => options.appendChild(link));
 } else {
   status.textContent =
     "Pedido registrado con número " + result.pedido +
