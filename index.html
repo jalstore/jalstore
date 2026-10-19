@@ -419,8 +419,11 @@
     $("emptyProducts").classList.toggle("hidden", result.length > 0);
   }
 
-  function cartTotal() {
-    function pedirPorWhatsApp(numero) {
+function cartTotal() {
+  return cart.reduce((sum, item) => sum + item.precio * item.quantity, 0);
+}
+
+function pedirPorWhatsApp(numero) {
   if (!cart.length) {
     alert("Tu carrito está vacío. Agrega productos antes de continuar.");
     return;
@@ -442,10 +445,8 @@
   ].join("\n");
 
   const url = "https://wa.me/" + numero + "?text=" + encodeURIComponent(message);
-  window.open(url, "_blank", "noopener,noreferrer");
+  window.open(url, "_blank");
 }
-    return cart.reduce((sum, item) => sum + item.precio * item.quantity, 0);
-  }
 
   function addToCart(id) {
     const p = products.find(item => item.id === String(id));
