@@ -420,6 +420,30 @@
   }
 
   function cartTotal() {
+    function pedirPorWhatsApp(numero) {
+  if (!cart.length) {
+    alert("Tu carrito está vacío. Agrega productos antes de continuar.");
+    return;
+  }
+
+  const items = cart
+    .map(p => `${p.producto} x${p.quantity} (${money(p.precio * p.quantity)})`)
+    .join("\n");
+
+  const message = [
+    "Hola, quiero realizar un pedido en JALSTORE.",
+    "",
+    "Productos:",
+    items,
+    "",
+    "Total: " + money(cartTotal()),
+    "",
+    "Por favor, confirmen disponibilidad y entrega."
+  ].join("\n");
+
+  const url = "https://wa.me/" + numero + "?text=" + encodeURIComponent(message);
+  window.open(url, "_blank", "noopener,noreferrer");
+}
     return cart.reduce((sum, item) => sum + item.precio * item.quantity, 0);
   }
 
