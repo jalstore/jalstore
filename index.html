@@ -534,6 +534,13 @@
   $("search").addEventListener("input", renderProducts);
   $("sort").addEventListener("change", renderProducts);
   $("openCart").addEventListener("click", () => openOverlay("cartOverlay"));
+  $("whatsappCart1").addEventListener("click", () => {
+  pedirPorWhatsApp(WHATSAPP_NUMBERS[0]);
+});
+
+$("whatsappCart2").addEventListener("click", () => {
+  pedirPorWhatsApp(WHATSAPP_NUMBERS[1]);
+});
   $("goCheckout").addEventListener("click", () => {
     if (!cart.length) return;
     closeOverlay("cartOverlay");
