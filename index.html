@@ -673,5 +673,9 @@ links.forEach(link => options.appendChild(link));
   renderCart();
   loadProducts();
 </script>
+  <div id="visorImagen" class="visor-imagen" onclick="cerrarImagen()">
+  <button class="cerrar-visor" onclick="event.stopPropagation(); cerrarImagen()">×</button>
+  <img id="imagenAmpliada" src="" alt="Producto ampliado" onclick="event.stopPropagation()">
+</div>
 </body>
 </html>
