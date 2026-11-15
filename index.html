@@ -406,7 +406,7 @@
     $("productCount").textContent = result.length + (result.length === 1 ? " producto" : " productos");
     $("products").innerHTML = result.map(p => {
       const image = p.imagen
-        ? `<img src="${safe(p.imagen)}" alt="${safe(p.producto)}" loading="lazy" onerror="this.remove()">`
+       ? `<img src="${safe(p.imagen)}" alt="${safe(p.producto)}" loading="lazy" onclick="abrirImagen(this.src, this.alt)" style="cursor: zoom-in;" onerror="this.remove()">`
         : `<span class="no-image" aria-hidden="true">✦</span>`;
       const stockText = p.stock > 0 ? "Disponible: " + p.stock : "Consultar disponibilidad";
       const disabled = p.stock <= 0 ? "disabled" : "";
