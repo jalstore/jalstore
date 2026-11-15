@@ -425,7 +425,22 @@
     }).join("");
     $("emptyProducts").classList.toggle("hidden", result.length > 0);
   }
+function abrirImagen(src, alt) {
+  const visor = document.getElementById("visorImagen");
+  const imagen = document.getElementById("imagenAmpliada");
 
+  imagen.src = src;
+  imagen.alt = alt || "Producto JALSTORE";
+  visor.classList.add("activo");
+  document.body.style.overflow = "hidden";
+}
+
+function cerrarImagen() {
+  const visor = document.getElementById("visorImagen");
+  visor.classList.remove("activo");
+  document.getElementById("imagenAmpliada").src = "";
+  document.body.style.overflow = "";
+}
 function cartTotal() {
   return cart.reduce((sum, item) => sum + item.precio * item.quantity, 0);
 }
