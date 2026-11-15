@@ -471,6 +471,11 @@ function abrirImagen(src, alt) {
 }
 
 function cerrarImagen() {
+  document.addEventListener("keydown", function(event) {
+  if (event.key === "Escape") {
+    cerrarImagen();
+  }
+});
   const visor = document.getElementById("visorImagen");
   visor.classList.remove("activo");
   document.getElementById("imagenAmpliada").src = "";
